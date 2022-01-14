@@ -4,7 +4,8 @@ Microservice for storing files
 TODO
 + Dockerise
 - persistence volume
-- post a file
+- pass fileUpload params through env
++ post a file
 - check ways to pass params:
  - multipart
  - query string
