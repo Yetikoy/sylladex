@@ -1,0 +1,28 @@
+{
+  "name": "sylladex",
+  "version": "0.1.0",
+  "description": "Microservice for storing files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yetikoy/sylladex.git"
+  },
+  "keywords": [
+    "microservice",
+    "files",
+    "send"
+  ],
+  "author": "Roman Kuzmichev <yetikotuch@yandex.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yetikoy/sylladex/issues"
+  },
+  "homepage": "https://github.com/Yetikoy/sylladex#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}

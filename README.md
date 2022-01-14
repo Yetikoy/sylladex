@@ -2,7 +2,8 @@
 Microservice for storing files
 
 TODO
-- Dockerise
++ Dockerise
+- persistence volume
 - post a file
 - check ways to pass params:
  - multipart

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  sylladex:
+    build: ./sylladex
+    ports:
+      - "${MAIN_PORT:-9000}:80"
+    volumes:
+      - "./sylladex:/sylladex" # map host folder to container: changes are reflected immediately
+      - "/sylladex/node_modules" # shadow node_modules so container doesn't pollute host with packages
+    environment:
+      - NODE_ENV
+    restart: unless-stopped
