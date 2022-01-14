@@ -20,8 +20,12 @@ app.get('/v1/file/:name', (req, res) => {
 	const filename = '/persistence/' + req.params.name + '/file';
 	const metaName = '/persistence/' + req.params.name + '/meta.json';
 	fs.readFile(metaName)
-		.then((data) => JSON.parse(data).mimetype)
-		.then((mimetype) => res.sendFile(filename, {headers: {"Content-Type": mimetype}}))
+		.then(JSON.parse)
+		.then((data) => {
+			res.type(data.mimetype);
+			res.attachment(data.name);
+		})
+		.then(() => res.sendFile(filename))
 		.catch(() => res.send("404 not found"))// TODO: proper machine friendly 404
 });
 

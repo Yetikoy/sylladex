@@ -15,8 +15,9 @@ TODO
  - origin
  - meta?
  - owner/privacy?
-- serve file
- - just serve a file
- - make sure application type is correct
- - make sure downloaded filename is correct
++ serve file
+ + just serve a file
+ + make sure application type is correct
+ + make sure downloaded filename is correct
 - https: enforce or delegate to infra?
+- make sure hotlinking and downloading work
