@@ -15,7 +15,7 @@ app.post('/upload', (req, res) => {
 			errorMessage: "You have to post exactly 1 file"
 		});
 	}
-	accomodate(files[0], {}, {})
+	accomodate(files[0], {}, {persistence: '/persistence'})
 		.then((path) => res.send({success: true, error: false, path}))
 });
 
