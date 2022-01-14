@@ -2,11 +2,30 @@ import express from "express";
 import fileUpload from "express-fileupload";
 import _ from "lodash/fp.js";
 import accomodate from "./accomodate.js";
+import * as fs from "fs/promises";
 
 const app = express();
 app.use(fileUpload());
 
-app.post('/upload', (req, res) => {
+app.get('/v1/meta/:name', (req, res) => {
+	// TODO: check that name looks plausible
+	const metaName = '/persistence/' + req.params.name + '/meta.json';
+	fs.readFile(metaName)
+		.then((data) => res.send(JSON.parse(data)))
+		.catch(() => res.send("404 not found"))// TODO: proper machine friendly 404
+});
+
+app.get('/v1/file/:name', (req, res) => {
+	// TODO: check that name looks plausible
+	const filename = '/persistence/' + req.params.name + '/file';
+	const metaName = '/persistence/' + req.params.name + '/meta.json';
+	fs.readFile(metaName)
+		.then((data) => JSON.parse(data).mimetype)
+		.then((mimetype) => res.sendFile(filename, {headers: {"Content-Type": mimetype}}))
+		.catch(() => res.send("404 not found"))// TODO: proper machine friendly 404
+});
+
+app.post('/v1/upload', (req, res) => {
 	const files = _.values(req.files);
 	if (!files || files.length != 1) {
 		return res.send({
