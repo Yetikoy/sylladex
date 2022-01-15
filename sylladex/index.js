@@ -1,7 +1,7 @@
 import express from "express";
 import fileUpload from "express-fileupload";
 import _ from "lodash/fp.js";
-import FileStorage from './accomodate.js';
+import FileStorage from './fileStorage.js';
 import * as fs from "fs/promises";
 
 const app = express();
