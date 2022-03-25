@@ -1,6 +1,7 @@
-import { v4 as uuid } from "uuid";
+// TODO: uninstall uuid
 import * as fs from "fs/promises";
 import _ from "lodash/fp.js";
+import nid from "./nid.js";
 
 class FileStorage {
 	#config;
@@ -12,7 +13,7 @@ class FileStorage {
 	getMetaname(name) {return this.getDir(name) + '/meta.json';};
 
 	async put(file) {
-		const path = uuid();
+		const path = nid();
 		await fs.mkdir(this.getDir(path));
 		await file.mv(this.getFilename(path));
 		await this.writeMeta(path, _.pick(['name', 'size', 'encoding', 'mimetype', 'md5'])(file));
