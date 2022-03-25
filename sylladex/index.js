@@ -12,8 +12,8 @@ const files = new FileStorage({persistencePath:'/persistence'});
 // TODO investigate express + promises, maybe streamline it all a bit
 app.get('/v1/meta/:name', (req, res) => {
 	files.getMeta(req.params.name)
-		.then(res.send(data))
-		.catch(() => res.send("404 not found"))// TODO: proper machine friendly 404
+		.then((data) => res.send(JSON.stringify(data)))
+		.catch((e) => res.send(e + "404 not found"))// TODO: proper machine friendly 404
 });
 
 app.get('/v1/file/:name', (req, res) => {
